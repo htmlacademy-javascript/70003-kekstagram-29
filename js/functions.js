@@ -1,6 +1,6 @@
 const compareStringLength = (string, numberOfSymbols) => string.length <= numberOfSymbols;
-console.log(compareStringLength('проверяемая строка', 10));
-console.log(compareStringLength('проверяемая строка', 20));
+compareStringLength('проверяемая строка', 10);
+compareStringLength('проверяемая строка', 20);
 
 const palindrome = (string) => {
   string = string.replaceAll(' ', '').toLowerCase();
@@ -11,10 +11,10 @@ const palindrome = (string) => {
   }
 };
 
-console.log(palindrome('топот'));
-console.log(palindrome('ДовОд'));
-console.log(palindrome('Кекс'));
-console.log(palindrome('Лёша на полке клопа нашёл '));
+palindrome('топот');
+palindrome('ДовОд');
+palindrome('Кекс');
+palindrome('Лёша на полке клопа нашёл ');
 
 const returnNumbers = (string) => {
   let newString = '';
@@ -26,8 +26,8 @@ const returnNumbers = (string) => {
   return parseInt(newString, 10);
 };
 
-console.log(returnNumbers('2023 год')); // 2023
-console.log(returnNumbers('ECMAScript 2022')); // 2022
-console.log(returnNumbers('1 кефир, 0.5 батона')); // 105
-console.log(returnNumbers('агент 007'));
-console.log(returnNumbers('а я томат'));
+returnNumbers('2023 год'); // 2023
+returnNumbers('ECMAScript 2022'); // 2022
+returnNumbers('1 кефир, 0.5 батона'); // 105
+returnNumbers('агент 007');
+returnNumbers('а я томат');

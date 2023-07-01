@@ -148,4 +148,4 @@ const generateObjects = () =>
     createObject(index + 1)
   );
 
-console.log(generateObjects());
+generateObjects();
