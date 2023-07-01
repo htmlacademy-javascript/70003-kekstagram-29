@@ -1,13 +1,13 @@
-const compareStringLength = (string, numberOfSymbols) => string.length <= numberOfSymbols;
+const compareStringLength = (indexString, numberOfSymbols) => indexString.length <= numberOfSymbols;
 compareStringLength('проверяемая строка', 10);
 compareStringLength('проверяемая строка', 20);
 
-const palindrome = (string) => {
-  string = string.replaceAll(' ', '').toLowerCase();
-  for (let i = 0; i <= string.length / 2; i++) {
-    return string[i] !== string[string.length - 1 - i]
-      ? `${false} ${string}`
-      : `${true} ${string}`;
+const palindrome = (indexString) => {
+  indexString = indexString.replaceAll(' ', '').toLowerCase();
+  for (let i = 0; i <= indexString.length / 2; i++) {
+    return indexString[i] !== indexString[indexString.length - 1 - i]
+      ? `${false} ${indexString}`
+      : `${true} ${indexString}`;
   }
 };
 
@@ -16,11 +16,11 @@ palindrome('ДовОд');
 palindrome('Кекс');
 palindrome('Лёша на полке клопа нашёл ');
 
-const returnNumbers = (string) => {
+const returnNumbers = (indexString) => {
   let newString = '';
-  for (let i = 0; i <= string.length - 1; i++) {
-    if (!Number.isNaN(parseInt(string[i], 10))) {
-      newString += parseInt(string[i], 10);
+  for (let i = 0; i <= indexString.length - 1; i++) {
+    if (!Number.isNaN(parseInt(indexString[i], 10))) {
+      newString += parseInt(indexString[i], 10);
     }
   }
   return parseInt(newString, 10);

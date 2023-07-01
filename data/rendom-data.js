@@ -1,5 +1,5 @@
 const nameData = ['Степан', 'Аким', 'Тимур', 'Николай', 'Ким', 'Харитон'];
-const messageData = [
+const messageComments = [
   'Когда вы делаете фотографию, хорошо бы убирать пал…фессионально. Непонятен один момент: как так-то?!',
   'Кадрирование просто никакое. Фильтр подобран неудачно: я бы использовал сепию, выставленную на 80%',
   'Я потерял из-за этой фотки семью, детей и кота. Он…й любви к искусству и ушли к соседу. Всё отлично!',
@@ -117,4 +117,4 @@ const descriptionData = [
   'Вот это тачка! #wow #car #carwow #drive',
 ];
 
-export { nameData, messageData, descriptionData };
+export { nameData, messageComments, descriptionData };
