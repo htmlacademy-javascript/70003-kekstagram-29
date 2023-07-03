@@ -1,3 +1,4 @@
-import { generateObjects } from '../utils/generate-objects.js';
 
-generateObjects();
+import { renderThumbnails } from './creating-thumbnails.js';
+
+renderThumbnails();
