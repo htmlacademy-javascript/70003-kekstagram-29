@@ -1,5 +1,3 @@
-import { kekstagramData } from '../data/kekstagram-data.js';
-
 const pictures = document.querySelector('.pictures');
 
 const creatingThumbnails = ({ url, description, likes, comments }) => {
@@ -15,9 +13,9 @@ const creatingThumbnails = ({ url, description, likes, comments }) => {
   return container;
 };
 
-const renderThumbnails = () => {
+const renderThumbnails = (picturesData) => {
   const documentFragment = document.createDocumentFragment();
-  kekstagramData.forEach((item) => {
+  picturesData.forEach((item) => {
     documentFragment.append(creatingThumbnails(item));
   });
   return pictures.append(documentFragment);
