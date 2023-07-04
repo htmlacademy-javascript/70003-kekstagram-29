@@ -1,15 +1,17 @@
+import { showBigPicture } from './show-big-picture.js';
+
 const pictures = document.querySelector('.pictures');
 
-const creatingThumbnails = ({ url, description, likes, comments }) => {
+const creatingThumbnails = (item) => {
   const template = document
     .querySelector('#picture')
     .content.querySelector('.picture');
   const container = template.cloneNode(true);
-  container.querySelector('.picture__img').src = url;
-  container.querySelector('.picture__img').alt = description;
-  container.querySelector('.picture__likes').textContent = likes;
-  container.querySelector('.picture__comments').textContent = comments.length;
-
+  container.querySelector('.picture__img').src = item.url;
+  container.querySelector('.picture__img').alt = item.description;
+  container.querySelector('.picture__likes').textContent = item.likes;
+  container.querySelector('.picture__comments').textContent = item.comments.length;
+  container.addEventListener('click', () => showBigPicture(item));
   return container;
 };
 
