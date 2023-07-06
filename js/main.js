@@ -1,3 +1,5 @@
-import { generateObjects } from '../utils/generate-objects.js';
 
-generateObjects();
+import { renderThumbnails } from './creating-thumbnails.js';
+import { kekstagramData } from '../data/kekstagram-data.js';
+
+renderThumbnails(kekstagramData);
