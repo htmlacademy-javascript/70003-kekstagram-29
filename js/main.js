@@ -1,5 +1,4 @@
-
-import { renderThumbnails } from './creating-thumbnails.js';
+import { renderGellary } from './gallary.js';
 import { kekstagramData } from '../data/kekstagram-data.js';
 
-renderThumbnails(kekstagramData);
+renderGellary(kekstagramData);

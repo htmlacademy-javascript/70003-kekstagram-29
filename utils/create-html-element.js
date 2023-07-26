@@ -1,16 +1,19 @@
-const createHtmlElement = ({ element, htmlClass, text, attr }) => {
-  const newElement = document.createElement(element);
-  newElement.classList.add(htmlClass);
+const createHtmlElement = (data) => {
+  const li = document.createElement('li');
+  li.classList.add('social__comment');
+  const img = document.createElement('img');
+  img.classList.add('social__picture');
+  img.setAttribute('width', 35);
+  img.setAttribute('height', 35);
+  const p = document.createElement('p');
+  p.classList.add('social__text');
+  img.src = data.avatar;
+  img.alt = data.name;
+  p.textContent = data.message;
+  li.append(img);
+  li.append(p);
 
-  if (text) {
-    newElement.textContent = text;
-  }
-  if (attr) {
-    for (const key in attr) {
-      newElement.setAttribute(key, attr[key]);
-    }
-  }
-  return newElement;
+  return li;
 };
 
 export { createHtmlElement };
