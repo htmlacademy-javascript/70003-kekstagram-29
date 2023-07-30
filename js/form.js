@@ -1,3 +1,7 @@
+import './zoom.js';
+import './filters.js';
+import { resetScale } from './zoom.js';
+
 const overlayElement = document.querySelector('.img-upload__overlay');
 const uploadBtnElement = document.querySelector('.img-upload__input');
 const uploadBtnCloseElement = document.querySelector('.img-upload__cancel');
@@ -73,7 +77,8 @@ uploadFormElement.addEventListener('submit', (event) => {
     btnSub.style.cssText = 'color: red; border: 1px solid red';
   }
 });
-
+// overlayElement.classList.remove('hidden');
+// bodyElement.classList.add('modal-open');
 const onShowFormModal = () => {
   overlayElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
@@ -81,6 +86,7 @@ const onShowFormModal = () => {
 };
 
 const onHideFormModal = () => {
+  resetScale();
   uploadFormElement.reset();
   pristine.reset();
   overlayElement.classList.add('hidden');
