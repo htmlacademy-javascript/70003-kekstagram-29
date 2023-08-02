@@ -1,6 +1,8 @@
 import './zoom.js';
 import './filters.js';
 import { resetScale } from './zoom.js';
+import { sendData } from './api.js';
+import { showFormSubmissionSuccessMessage, showFormSubmissionErrorMessage } from '../utils/show-alert.js';
 
 const overlayElement = document.querySelector('.img-upload__overlay');
 const uploadBtnElement = document.querySelector('.img-upload__input');
@@ -16,8 +18,8 @@ const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}/i;
 const HAS_VALID_TAG_COUNT_MESSAGE = 'нельзя указать больше пяти хэш-тегов';
 const HAS_VALID_TAG_MESSAGE = 'введён невалидный хэш-тег';
 const HAS_UNIQUE_TAG_MESSAGE = 'хэш-теги повторяются';
-const IS_MAX_STRING_MESSAGE = 'длина комментария не может составлять больше 140 символов';
-
+const IS_MAX_STRING_MESSAGE =
+  'длина комментария не может составлять больше 140 символов';
 
 const pristine = new Pristine(uploadFormElement, {
   classTo: 'img-upload__field-wrapper',
@@ -42,7 +44,7 @@ const hasValidTag = (value) =>
   normalizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
 const hasUniqueTag = (value) => {
   const lowerCaseTag = normalizeTags(value).map((tag) => tag.toLowerCase());
-  return (lowerCaseTag.length === new Set(lowerCaseTag).size);
+  return lowerCaseTag.length === new Set(lowerCaseTag).size;
 };
 
 pristine.addValidator(
@@ -64,21 +66,6 @@ pristine.addValidator(
   3
 );
 
-uploadFormElement.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const isValid = pristine.validate();
-  if (isValid) {
-    btnSub.setAttribute('disabled', 'disabled');
-    btnSub.disabled = false;
-    btnSub.style.cssText = 'color: blue; border: 1px solid black';
-  } else {
-    btnSub.removeAttribute('disabled');
-    btnSub.disabled = true;
-    btnSub.style.cssText = 'color: red; border: 1px solid red';
-  }
-});
-// overlayElement.classList.remove('hidden');
-// bodyElement.classList.add('modal-open');
 const onShowFormModal = () => {
   overlayElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
@@ -104,6 +91,22 @@ function onDocumentKeydown(event) {
     onHideFormModal();
   }
 }
+
+uploadFormElement.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const isValid = pristine.validate();
+
+  if (isValid) {
+    btnSub.setAttribute('disabled', 'disabled');
+    const formData = new FormData(uploadFormElement);
+    sendData(formData).then(() => {
+      onHideFormModal();
+      showFormSubmissionSuccessMessage();
+    }).catch(() => {
+      showFormSubmissionErrorMessage();
+    }).finally(()=> btnSub.removeAttribute('disabled'));
+  }
+});
 
 uploadBtnElement.addEventListener('change', onShowFormModal);
 uploadBtnCloseElement.addEventListener('click', onHideFormModal);
