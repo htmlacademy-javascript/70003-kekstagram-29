@@ -1,5 +1,6 @@
 import './zoom.js';
 import './filters.js';
+import './avatar.js';
 import { resetScale } from './zoom.js';
 import { sendData } from './api.js';
 import { showFormSubmissionSuccessMessage, showFormSubmissionErrorMessage } from '../utils/show-alert.js';
